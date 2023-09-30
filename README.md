@@ -48,7 +48,27 @@ A Shebang (sha-bang) tells the bash script what program that will interpret the 
 ChatGPT recommended this format for bash: `#!/usr/bin/env bash`
 - for portability for different OS distribution
 - Will search the user's PATH for the bash executable
+
+https://en.wikipedia.org/wiki/Shebang_(Unix)
+#### Executioin Considerations
+
 When executing the bash script, we can use the `./` shorthand notation to execute the bash script.
+
+eg. `./bin/install_terraform_cli`
+If we are using a script in .gitpod.yml, we need to point the script to a program to interpret it.
+
+eg. `source ./bin/install_terraform_cli`
+
+#### Linus Permissions Considerations 
+In order to make our bash scripts executable, we need to change Linux permissions for the fix to be executable at the user mode. It works as follow:
+
+```sh
+chmod u+x ./bin/install_terraform_cli
+```
+alternatively:
+```
+chmod 744 ./bin/install_terraform_cli
+```
 
 https://en.wikipedia.org/wiki/Chmod
 
@@ -56,6 +76,8 @@ https://lamby.cloud/docs/anatomy <= 38.56min
 
 https://en.wikipedia.org/wiki/Shebang_(Unix)
 
+### Gitpod Lifecycle (Before, Init, Command)
+We need to be careful when using the init because it will not rerun if we restart an existing workspace.
 https://www.gitpod.io/docs/configure/workspaces/tasks
 
 ? what does it mean by making a script portable?
