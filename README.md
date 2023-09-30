@@ -90,4 +90,59 @@ https://en.wikipedia.org/wiki/Shebang_(Unix)
 We need to be careful when using the init because it will not rerun if we restart an existing workspace.
 https://www.gitpod.io/docs/configure/workspaces/tasks
 
-? what does it mean by making a script portable?
+- [ ] what does it mean by making a script portable ?
+
+### Working Env Vars
+
+#### env command
+To see all environment variable using the following command.
+
+```
+$env
+```
+
+Querying environment variable, in this example, we are querying for `gripod` in the environment variables
+```
+$ env | grep gitpod
+```
+
+#### Setting and Unsetting Env Vars
+
+In the terminal, we can set using `export HELLO='world'`
+
+In the terminal , we unset using `unset HELLO`
+
+We can set an env var temporarily when just running a command
+
+```sh
+HELLO = 'World' ./bin/print_message
+```
+Within a bash script we can set env without writing export eg.
+
+```sh
+#!/usr/bin/env bash
+
+HELLO='world'
+echo $HELLO
+```
+
+#### Printing Vars
+
+We can print an env var using echo eg. `echo $HELLO`
+
+#### Scoping of Env Vars
+
+When you open new bash terminals in VSCode, it will not be aware of env vars that you have set in another terminal.
+If you want to Env Vars to persist across all future bash terminals that are open, you need to set env vars in your bash profile. eg. `.bash_profile`
+
+#### Persisting Env Vars in Gitpod
+
+We can persist env vars into gitpod by storing them in Gitpod Secrets Storage.
+```
+gp env Hello ='world'
+```
+
+You can also set env vars in the `.gitpod.yml` but this can only contain non-sensitive env vars.
+
+
+
