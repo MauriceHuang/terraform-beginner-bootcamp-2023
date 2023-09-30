@@ -13,6 +13,7 @@ The general format:
 - **MINOR** version when you add functionality in a backward compatible manner
 - **PATCH** version when you make backward compatible bug fixes
 
+
 ## Install the Terraform CLI
 
 ### Considerations with the Terraform CLI Changes
