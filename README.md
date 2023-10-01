@@ -166,3 +166,77 @@ if it is successful, it will return a json payload :
 ```
 
 We will need to generate AWS CLI credential from IAM user to use AWS CLI
+
+# Terraform Basics
+
+Terraform is a powerful Infrastructure as Code tool, enabling developers to provision and manage cloud resources using a declarative configuration language. Here's a breakdown of its basic concepts:
+
+## Terraform Registry
+
+The central hub where Terraform sources its modules and providers.
+
+- **URL:** [registry.terraform.io](https://registry.terraform.io)
+
+### Key Components:
+
+- **Providers**: They act as an interface to APIs, enabling you to create resources using Terraform. They translate the HCL code into API calls to cloud platforms.
+  - **Example**: The *Random Terraform Provider* generates random values.
+  
+- **Modules**: Helps in making Terraform code modular, portable, and shareable. Useful for creating reusable infrastructure components.
+
+## Terraform Commands
+
+Commands are essential for interacting with Terraform to manage infrastructure.
+
+### Common Commands:
+
+- **Terraform Console**: A helpful CLI interface. 
+  - To see all commands: 
+    ```bash
+    terraform
+    ```
+
+- **Terraform Init**: 
+  - Purpose: Initializes a new Terraform project and downloads necessary binaries for the providers.
+    ```bash
+    terraform init
+    ```
+
+- **Terraform Plan**:
+  - Purpose: Creates a changeset detailing how the current infrastructure state will be altered.
+    ```bash
+    terraform plan
+    ```
+
+- **Terraform Apply**: 
+  - Purpose: Executes the planned changes to the infrastructure.
+    ```bash
+    terraform apply
+    ```
+  - To automatically approve changes:
+    ```bash
+    terraform apply --auto-approve
+    ```
+
+## Important Files & Directories
+
+### Lock Files
+
+- **`.terraform.lock.hcl`**: 
+  - Contains locked versions of providers or modules for the project.
+  - **Recommendation**: Commit this file to your Version Control System (e.g., GitHub).
+
+### State Files
+
+- **`.terraform.tfstate`**: 
+  - Contains the current state of your infrastructure.
+  - **Caution**: May contain sensitive data.
+  - **Recommendation**: Do not commit to your VCS. Loss of this file means loss of infrastructure state knowledge.
+
+- **`.terraform.tfstate.backup`**: 
+  - A backup of the previous state file.
+
+### Directories
+
+- **`.terraform`**:
+  - Contains binaries of Terraform providers.
