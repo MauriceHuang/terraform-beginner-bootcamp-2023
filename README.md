@@ -218,6 +218,16 @@ Commands are essential for interacting with Terraform to manage infrastructure.
     terraform apply --auto-approve
     ```
 
+- **Terraform Destroy**:
+  - Purpose : Delete resources created by the terraform.
+    ```bash
+    terraform destroy
+    ```
+  - To automatically approve deletion:
+    ```bash
+    terraform destroy --auto-approve
+    ```
+
 ## Important Files & Directories
 
 ### Lock Files
