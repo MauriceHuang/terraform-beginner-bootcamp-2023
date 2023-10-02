@@ -250,3 +250,54 @@ Commands are essential for interacting with Terraform to manage infrastructure.
 
 - **`.terraform`**:
   - Contains binaries of Terraform providers.
+
+## Issue with Terraform Cloud Login and Gitpod Workspace
+
+When attempting to run `terraform login` it will launch bash a wiswig view to generate a token. However it does not work as expected in Gitpod in the browser.
+
+The workaround is manually generate a token in Terraform Cloud
+
+```
+https://app.terraform.io/app/settings/tokens?source=terraform-login
+```
+
+Then create open the file manually here:
+
+```sh
+touch /home/gitpod/.terraform.d/credentials.tfrc.json
+open /home/gitpod/.terraform.d/credentials.tfrc.json
+```
+
+Provide the following code (replace your token in the file):
+
+```json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOUR-TERRAFORM-CLOUD-TOKEN"
+    }
+  }
+}
+```
+
+## Issue with Terraform Cloud Login and Visual Studio Code
+
+When attempting to run `terraform plan` it will launch bash a wiswig view to generate a token. However it does not work as expected in Gitpod in the browser.
+```sh
+Error: No valid credential sources found
+
+   with provider["registry.terraform.io/hashicorp/aws"],
+   on main.tf line 23, in provider "aws":
+   23: provider "aws" {
+ 
+ Please see https://registry.terraform.io/providers/hashicorp/aws
+ for more information about providing credentials.
+ 
+ Error: failed to refresh cached credentials, no EC2 IMDS role found,
+ operation error ec2imds: GetMetadata, request canceled, context deadline
+ exceeded
+ 
+
+Operation failed: failed running terraform plan (exit 1)
+```
+Follow this instruction to set up variables in the Terramform console. Get your AWS credentials as environment variables with either an existing Access key ID and Secret access key or create a new pair in the IAM console.
