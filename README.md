@@ -301,3 +301,5 @@ Error: No valid credential sources found
 Operation failed: failed running terraform plan (exit 1)
 ```
 Follow this instruction to set up variables in the Terramform console. Get your AWS credentials as environment variables with either an existing Access key ID and Secret access key or create a new pair in the IAM console.
+
+We have automated the generation of the Terraform credential using bash scrit [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
