@@ -10,7 +10,7 @@
   * [Shebang Considerations](#shebang-considerations)
     + [Executioin Considerations](#executioin-considerations)
     + [Linus Permissions Considerations](#linus-permissions-considerations)
-- [Gitpod Lifecycle (Before, Init, Command)](#gitpod-lifecycle--before--init--command-)
+- [Gitpod Lifecycle](#gitpod-lifecycle)
 - [Working Env Vars](#working-env-vars)
   * [env command](#env-command)
   * [Setting and Unsetting Env Vars](#setting-and-unsetting-env-vars)
@@ -117,7 +117,7 @@ https://lamby.cloud/docs/anatomy <= 38.56min
 
 https://en.wikipedia.org/wiki/Shebang_(Unix)
 
-## Gitpod Lifecycle (Before, Init, Command)
+## Gitpod Lifecycle
 We need to be careful when using the init because it will not rerun if we restart an existing workspace.
 https://www.gitpod.io/docs/configure/workspaces/tasks
 
