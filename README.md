@@ -1,5 +1,7 @@
 # Terraform Beginner Bootcamp 2023
 
-## Table of Content
+## Weekly Journals
+  - [Week 0](/journal/week0.md)
 
+## Extra
 [Github markdown TOC Generator](https://ecotrust-canada.github.io/markdown-toc/)
