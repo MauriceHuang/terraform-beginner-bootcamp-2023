@@ -1,5 +1,36 @@
 # Terraform Beginner Bootcamp 2023
 
+## Table of Content
+
+- [Terraform Beginner Bootcamp 2023](#terraform-beginner-bootcamp-2023)
+  * [Semantic Versioning](#semantic-versioning)
+  * [Install the Terraform CLI](#install-the-terraform-cli)
+    + [Considerations with the Terraform CLI Changes](#considerations-with-the-terraform-cli-changes)
+    + [Considerations for Linux Distribution](#considerations-for-linux-distribution)
+    + [Refactoring into Bash Scripts](#refactoring-into-bash-scripts)
+    + [Shebang Considerations](#shebang-considerations)
+      - [Executioin Considerations](#executioin-considerations)
+      - [Linus Permissions Considerations](#linus-permissions-considerations)
+    + [Gitpod Lifecycle (Before, Init, Command)](#gitpod-lifecycle--before--init--command-)
+    + [Working Env Vars](#working-env-vars)
+      - [env command](#env-command)
+      - [Setting and Unsetting Env Vars](#setting-and-unsetting-env-vars)
+      - [Printing Vars](#printing-vars)
+      - [Scoping of Env Vars](#scoping-of-env-vars)
+      - [Persisting Env Vars in Gitpod](#persisting-env-vars-in-gitpod)
+    + [AWS CLI Installation](#aws-cli-installation)
+- [Terraform Basics](#terraform-basics)
+  * [Terraform Registry](#terraform-registry)
+    + [Key Components:](#key-components-)
+  * [Terraform Commands](#terraform-commands)
+    + [Common Commands:](#common-commands-)
+  * [Important Files & Directories](#important-files---directories)
+    + [Lock Files](#lock-files)
+    + [State Files](#state-files)
+    + [Directories](#directories)
+  * [Issue with Terraform Cloud Login and Gitpod Workspace](#issue-with-terraform-cloud-login-and-gitpod-workspace)
+  * [Issue with Terraform Cloud Login and Visual Studio Code](#issue-with-terraform-cloud-login-and-visual-studio-code)
+
 ## Semantic Versioning
 
 This project is going utilize semantic versioning for its tagging.
