@@ -7,4 +7,12 @@ variable "user_uuid" {
   }
 }
 
+variable "bucket_name" {
+  type        = string
+  description = "AWS S3 bucket name"
 
+  validation {
+    condition     = can(regex("^[-.a-z0-9]{3,63}$", var.bucket_name))
+    error_message = "Invalid bucket name. Bucket names must be between 3 and 63 characters long and can only contain lowercase letters, numbers, hyphens, and periods."
+  }
+}
