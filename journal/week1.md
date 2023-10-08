@@ -166,3 +166,35 @@ resource "aws_s3_object" "index_html" {
   source = "${path.toot}/public/index.html"
 }
 ```
+
+### Terraform Locals  
+Locals allows us to define local variables. It can be useful to transform into anther variable and be queried.
+```tf
+locals {
+  s3_origin_id = "myS3Origin"
+}
+```
+
+[Local values](https://developer.hashicorp.com/terraform/language/values/locals)
+### Terraform Data Sources
+This allows us to query data of our aws without importing them.
+
+```tf
+data "aws_caller_identity" "current" {}
+
+output "account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
+```
+
+[Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)
+
+### Workin with JSON 
+We use the jsonencode to create inline policy.
+
+```tf
+> jsonencode({"hello"="world"})
+{"hello":"world"}
+```
+
+[jsonencode](https://developer.hashicorp.com/terraform/language/functions/jsonencode)
