@@ -39,7 +39,7 @@ variable "content_version" {
   type        = number
   default     = 1  
   validation {
-    condition = var.content_version > 1 && floor(var.content_version) == var.content_version
+    condition = var.content_version > 0 && floor(var.content_version) == var.content_version
     error_message = "The content_version must start with 1."
   }
 }
