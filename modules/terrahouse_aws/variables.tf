@@ -43,3 +43,9 @@ variable "content_version" {
     error_message = "The content_version must start with 1."
   }
 }
+
+variable "assets_path" {
+  description = "The Path to the asset folder"
+  type = string
+  
+}

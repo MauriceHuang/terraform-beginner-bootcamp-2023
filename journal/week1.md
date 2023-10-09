@@ -255,3 +255,14 @@ resource "aws_instance" "web" {
 }
 ```
 https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec
+
+## For Each Expressions
+
+For each allows us to go through each of the items in a complex data structure.
+
+```sh
+[for s in var.list : upper(s)]
+```
+This is useful when you are creating multiples of a cloud resource and you want to reduce the amount of reptitive terraform code.
+
+[For each Expression](https://developer.hashicorp.com/terraform/language/meta-arguments/for_each)

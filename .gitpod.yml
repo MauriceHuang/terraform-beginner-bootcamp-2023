@@ -11,6 +11,10 @@ tasks:
     before: |
       source ./bin/set_tf_alias
       source ./bin/install_aws_cli
+  - name: http-server
+    before: |
+      npm install http-server -g
+    command: http-server 
 vscode:
   extensions:
     - amazonwebservices.aws-toolkit-vscode
