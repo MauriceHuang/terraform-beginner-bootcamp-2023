@@ -16,7 +16,7 @@ variable "bucket_name" {
     error_message = "Invalid bucket name. Bucket names must be between 3 and 63 characters long and can only contain lowercase letters, numbers, hyphens, and periods."
   }
 }
-
+/*
 variable "index_html_filepath" {
   type    = string
 
@@ -34,3 +34,4 @@ variable "error_html_filepath" {
     error_message = "Invalid path specified for error_html_path variable."
   }
 }
+*/
