@@ -1,7 +1,7 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_access_control
 # https://aws.amazon.com/blogs/networking-and-content-delivery/amazon-cloudfront-introduces-origin-access-control-oac/
 locals {
-  s3_origin_id = "myS3Origin"
+  s3_origin_id = "MyS3Origin" 
 }
 
 resource "aws_cloudfront_origin_access_control" "default" {
