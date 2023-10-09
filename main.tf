@@ -1,5 +1,11 @@
 terraform {
   
+  cloud {
+    organization = "mauricehuang"
+    workspaces {
+      name = "terraform-cloud"
+    }
+  }
 }
 module "terrahouse_aws"{
   source = "./modules/terrahouse_aws"

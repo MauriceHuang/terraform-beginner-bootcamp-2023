@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "website_bucket" {
   bucket = var.bucket_name
    tags = {
      UserUuid    = var.user_uuid
-     
+    Hello = "world" 
    }
 }
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration
@@ -62,9 +62,9 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
             "Condition": {
                 "StringEquals": {
                   # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity
-                    "AWS:SourceArn": "arn:aws:cloudfront::${data.aws_caller_identity.current.account_id}:distribution/${aws_cloudfront_distribution.s3_distribution.id}"
+                    # "AWS:SourceArn": "arn:aws:cloudfront::${data.aws_caller_identity.current.account_id}:distribution/${aws_cloudfront_distribution.s3_distribution.id}"
                     # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/cloudfront_distribution
-                    # "AWS:SourceArn":data.aws_caller_identity.current.arn
+                    "AWS:SourceArn":data.aws_caller_identity.current.arn
                 }
             }
         },
