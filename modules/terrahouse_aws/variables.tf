@@ -34,3 +34,12 @@ variable "error_html_filepath" {
     error_message = "Invalid path specified for error_html_path variable."
   }
 }
+variable "content_version" {
+  description = "The content version, which starts with 1."
+  type        = number
+  default     = 1  
+  validation {
+    condition = var.content_version > 1 && floor(var.content_version) == var.content_version
+    error_message = "The content_version must start with 1."
+  }
+}
