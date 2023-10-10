@@ -34,3 +34,15 @@ Sinatra is a micro-web-framework for ruby to build web-apps.
 It is great for mock ordevelopment servers or for very simple project. Your can create a web-server with just 1 file.
 
 https://sinatrarb.com/
+
+## Terratowns Mock Server
+
+### Running the web server
+
+We can run the web server by executing the following commands:
+
+```rb
+bundle install
+bundle exec ruby server.rb
+```
+All of the code for our server is stored in the `server.rb` file.
