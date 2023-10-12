@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"net/http"
 
 	"github.com/google/uuid"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
@@ -94,24 +95,109 @@ func Resource() *schema.Resource {
 		ReadContext:   resourceHouseRead,
 		UpdateContext: resourceHouseUpdate,
 		DeleteContext: resourceHouseDelete,
+		Schema: map[string]*schema.Schema{
+			"name": {
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "Name of home",
+			},
+			"description": {
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "Description of home",
+			},
+			"domain_name": {
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "Domain Name of home eg. *.cloudfront.net",
+			},
+			"town": {
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "The town that the home belongs to",
+			},
+			"content_version": {
+				Type:        schema.TypeInt,
+				Required:    true,
+				Description: "The content version of the home",
+			},
+		},
 	}
-	log.Print("Resouce:stop")
+	log.Print("Resouce:start")
 	return resource
 }
 
 func resourceHouseCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+	log.Print("resourceHouseCreate:start")
 	var diags diag.Diagnostics
+
+	config := m.(*Config)
+	//construct http request
+	req, err := http.NewRequest("POST", config.Endpoint+"/u/"+config.UserUuid+"/homes", nil)
+	if err != nil {
+		return diag.FromError(error)
+	}
+
+	//set Headers
+	req.Header.Set("Authorization", "Bearer "+config.Token)
+	req.Header.Set("Content-type", "application/json")
+	req.Header.Set("Accept", "application/json")
+	log.Print("resourceHouseCreate:end")
 	return diags
 }
 func resourceHouseRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+	log.Print("resourceHouseRead:start")
 	var diags diag.Diagnostics
+	config := m.(*Config)
+
+	//construct http request
+	req, err := http.NewRequest("GET", config.Endpoint+"/u/"+config.UserUuid+"/homes/"+homeUUID, nil)
+	if err != nil {
+		return diag.FromError(error)
+	}
+
+	//set Headers
+	req.Header.Set("Authorization", "Bearer "+config.Token)
+	req.Header.Set("Content-type", "application/json")
+	req.Header.Set("Accept", "application/json")
+
+	log.Print("resourceHouseRead:end")
 	return diags
 }
 func resourceHouseUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+	log.Print("resourceHouseUpdate:start")
 	var diags diag.Diagnostics
+	config := m.(*Config)
+
+	//construct http request
+	req, err := http.NewRequest("PUT", config.Endpoint+"/u/"+config.UserUuid+"/homes"+homeUUID, nil)
+	if err != nil {
+		return diag.FromError(error)
+	}
+
+	//set Headers
+	req.Header.Set("Authorization", "Bearer "+config.Token)
+	req.Header.Set("Content-type", "application/json")
+	req.Header.Set("Accept", "application/json")
+	log.Print("resourceHouseUpdate:end")
 	return diags
 }
 func resourceHouseDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+	log.Print("resourceHouseDelete:start")
 	var diags diag.Diagnostics
+	config := m.(*Config)
+	//construct http request
+	req, err := http.NewRequest("DELETE", config.Endpoint+"/u/"+config.UserUuid+"/homes"+homeUUID, nil)
+	if err != nil {
+		return diag.FromError(error)
+	}
+
+	//set Headers
+	req.Header.Set("Authorization", "Bearer "+config.Token)
+	req.Header.Set("Content-type", "application/json")
+	req.Header.Set("Accept", "application/json")
+	log.Print("resourceHouseUpdate:end")
+	return diags
+	log.Print("resourceHouseDelete:end")
 	return diags
 }
